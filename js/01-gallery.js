@@ -12,6 +12,7 @@ function addGalleryItemHtml(item) {
     <a class="gallery__link" href="${item.original}">
     <img class="gallery__image"
     src="${item.preview}"
+    data-source="${item.original}"
     alt="${item.description}"/>
     </a>
     </div>`;
@@ -30,7 +31,7 @@ function creatModalImages (evt) {
     console.log(evt.currentTarget);
     if (evt.target.nodeName === "IMG") {
         modal = basicLightbox.create(`
-        <img width="1400" height="900" src="${evt.path[0].currentSrc}" alt="${evt.path[0].alt}">`);
+        <img width="1400" height="900" src="${evt.path[0].dataset.source}" alt="${evt.path[0].alt}">`);
         modal.show();
     }
     evt.preventDefault();
